@@ -9,7 +9,6 @@ make install
 ```
 This will install the required python packages.
 
----
 
 # Use
 
