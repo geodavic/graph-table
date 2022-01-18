@@ -1,5 +1,5 @@
 # graph-table
-Code to render graphs for Roman et. al. juggling project.
+Code to render graphs for Berens et. al. juggling project.
 
 # Install
 
