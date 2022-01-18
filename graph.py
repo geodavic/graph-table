@@ -4,7 +4,7 @@ from astropy.io import fits
 import csv
 import math
 
-# TODO: arrow in middle of self-loops, alignment axis
+# TODO: arrow in middle of self-loops, 
 
 class Polynomial(list): 
     # For printing polynomials -- credit to Eric on stack overflow
@@ -60,6 +60,37 @@ class TabularGraph:
         fp.close()
         return lists
 
+    def _get_loop_pos(self,idx,layout,H):
+
+        #sort adjacent nodes by position around the circle (starting from angle 0)
+        sort_fn = lambda v: (v[1]<0,np.arccos(np.dot(v/np.linalg.norm(v),[1,0])))
+        adjacent_vecs = sorted([layout[id_]-layout[idx] for id_ in H.neighbors(idx) if id_ != idx],key=sort_fn)
+
+        # special case when there is only one incident edge
+        if len(adjacent_vecs) == 1:
+            return -adjacent_vecs[0]+layout[idx]
+
+        #get angles between adjacent nodes
+        angles = [np.arctan2(v[1],v[0]) for v in adjacent_vecs]
+        angle_diffs = [a-b for a,b in zip([angles[-1]]+angles[:-1],angles)]
+        for i in range(len(angle_diffs)):
+            d = angle_diffs[i]
+            if d < 0:
+                angle_diffs[i] += 2*math.pi
+            if d > 2*math.pi:
+                angle_diffs[i] -= 2*math.pi
+
+        # get the biggest angle gap and rotate the starting vector 
+        # by half that to get the position.
+        max_idx = np.argmax(angle_diffs)
+        cos = np.cos(angle_diffs[max_idx]/2)
+        sin = np.sin(angle_diffs[max_idx]/2)
+        rot = np.array([[cos,-sin],[sin,cos]])
+        pos = rot@adjacent_vecs[max_idx]
+
+        return pos+layout[idx]
+
+
     def _compute_loop_angle(self,px,py,loop_pos):
         angle_between = lambda v1,v2: np.arccos(np.dot(v1/np.linalg.norm(v1),v2/np.linalg.norm(v2))) 
         angle_from_e1 = lambda v1: angle_between(v1,np.array([1,0]))
@@ -74,8 +105,8 @@ class TabularGraph:
         return angle
 
     def _draw_line(self,px_out,py_out,px_in,py_in,bidir=False):
-        middle_arrow_prop = 0.625
-        line_str = f"\\draw[decoration={{markings, mark=at position {middle_arrow_prop} with {{\\arrow{{>}} }} }},"\
+        self.middle_arrow_prop = 0.625
+        line_str = f"\\draw[decoration={{markings, mark=at position {self.middle_arrow_prop} with {{\\arrow{{>}} }} }},"\
             +f"postaction={{decorate}}] ({px_out},{py_out}) -> ({px_in},{py_in});\n"
         if bidir:
             line_str += self._draw_line(px_in,py_in,px_out,py_out,bidir=False)
@@ -89,7 +120,10 @@ class TabularGraph:
         opt_angle = self._compute_loop_angle(px,py,loop_pos)
         in_ = opt_angle + angle_width
         out_ = opt_angle - angle_width
-        line_str = f"\\draw[->] ({px},{py}) edge[out={out_},in={in_},distance={distance}mm] ({px},{py});"
+        line_str = f"\\draw[decoration={{markings, mark=at position {self.middle_arrow_prop} with {{\\arrow{{>}} }} }},"\
+            +f"postaction={{decorate}}] ({px},{py}) edge[out={out_},in={in_},distance={distance}mm] ({px},{py});\n"
+
+        #line_str = f"\\draw[->] ({px},{py}) edge[out={out_},in={in_},distance={distance}mm] ({px},{py});"
         return line_str 
 
     def _draw_subiso_poly(self,sub,poly,mid_y=0):
@@ -98,7 +132,7 @@ class TabularGraph:
         else:
             sub_str = str(sub)
         if not poly:
-            poly_str = "--"
+            poly_str = "0"
         else:
             poly_str = Polynomial(poly)
         return sub_str,poly_str
@@ -141,12 +175,12 @@ class TabularGraph:
         hshift = 0
         vshift = 0
         H = nx.from_numpy_matrix(mat)
-        G = nx.from_numpy_matrix(mat)
 
-        # hanlde self-loops
-        for idx in np.nonzero(np.diag(mat))[0]:
-            H.remove_edge(idx,idx) 
-            H.add_edge(idx,len(mat)+idx)
+        # handle self-loops
+        if self.loops_are_nodes:
+            for idx in np.nonzero(np.diag(mat))[0]:
+                H.remove_edge(idx,idx) 
+                H.add_edge(idx,len(mat)+idx)
 
         layout = self._get_layout(H,len(mat))
 
@@ -189,22 +223,27 @@ class TabularGraph:
                 block_str += self._draw_line(px_out,py_out,px_in,py_in,bidir=True)
             else:
                 # draw self-loops
-                loop_pos = layout[len(mat)+edge_out]
+                if self.loops_are_nodes:
+                    loop_pos = layout[len(mat)+edge_out]
+                else:
+                    loop_pos = self._get_loop_pos(edge_out,layout,H)
+                    
                 block_str += self._draw_selfloop(px_in,py_in,loop_pos)
 
         block_str = "\\multicolumn{1}{m{2.5cm}}{\\begin{tikzpicture}\n" + block_str + "\\end{tikzpicture}}\n"
         return block_str
 
     def make_tabular(self,tikz_str):
-        titles = " \small{Graph} & \small{Subisomorphisms} & \small{Polynomial} "
+        titles = " \small{Graph} & \small{Subisom.} & \small{Polynomial} & \small{Min. $b$} "
         top = "\\hline \n"+titles+"&"+titles+"\\\\ \n \\hline \n"
-        rval = "\\begin{tabular}{ccc||ccc}\n"+ top + tikz_str + "\\end{tabular}\n"
+        rval = "\\begin{tabular}{cccc||cccc}\n"+ top + tikz_str + "\\end{tabular}\n"
         return rval
 
-    def render(self,num=None,seed=1,scale=1,angle=45,out_name="input.tex"):
+    def render(self,num=None,seed=1,scale=1,angle=45,loops_are_nodes=False,out_name="input.tex"):
         self.seed = seed
         self.scale = scale
         self.align_angle = 2*math.pi*((angle-45)/360)
+        self.loops_are_nodes = loops_are_nodes
 
         tikz_str = ""
         counter = True
@@ -215,9 +254,9 @@ class TabularGraph:
             sub_str,poly_str = self._draw_subiso_poly(sub,poly)
             tikz_str += block_str
             if counter:
-                tikz_str += f"& ${sub_str}$ & ${poly_str}$ &\n"
+                tikz_str += f"& ${sub_str}$ & \small{{${poly_str}$}} & ${len(sub)}$ & \n"
             else:
-                tikz_str += f"& ${sub_str}$ & ${poly_str}$ \\\\ \n"
+                tikz_str += f"& ${sub_str}$ & \small{{${poly_str}$}} & ${len(sub)}$ \\\\ \n"
             counter ^= 1
        
         final = self.make_tabular(tikz_str)
@@ -235,7 +274,8 @@ if __name__ == "__main__":
     parser.add_argument("--seed",type=int,default=1,help="Seed for graph drawing function.")
     parser.add_argument("--limit",type=int,default=None,help="Max number of graphs to render.")
     parser.add_argument("--angle",type=float,default=45,help="Alignment angle of graphs (in degrees).")
+    parser.add_argument("--self_loop_nodes",action="store_true",help="Treat self-loops as nodes when making each graph layout.")
 
     args = parser.parse_args()
     T = TabularGraph()
-    T.render(scale=args.scale,seed=args.seed,num=args.limit,angle=args.angle)
+    T.render(scale=args.scale,seed=args.seed,num=args.limit,angle=args.angle,loops_are_nodes=args.self_loop_nodes)
