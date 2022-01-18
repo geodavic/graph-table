@@ -70,16 +70,21 @@ class TabularGraph:
         if len(adjacent_vecs) == 1:
             return -adjacent_vecs[0]+layout[idx]
 
+        # easy case when there are two incident edges
+        if len(adjacent_vecs) == 2:
+            sum_ = adjacent_vecs[0] + adjacent_vecs[1]
+            return -sum_/2 + layout[idx]
+
         #get angles between adjacent nodes
         angles = [np.arctan2(v[1],v[0]) for v in adjacent_vecs]
-        angle_diffs = [a-b for a,b in zip([angles[-1]]+angles[:-1],angles)]
-        for i in range(len(angle_diffs)):
-            d = angle_diffs[i]
+        for i in range(len(angles)):
+            d = angles[i]
             if d < 0:
-                angle_diffs[i] += 2*math.pi
+                angles[i] += 2*math.pi
             if d > 2*math.pi:
-                angle_diffs[i] -= 2*math.pi
-
+                angles[i] -= 2*math.pi
+        angle_diffs = [a-b for a,b in zip([angles[-1]]+angles[:-1],angles)]
+        
         # get the biggest angle gap and rotate the starting vector 
         # by half that to get the position.
         max_idx = np.argmax(angle_diffs)
