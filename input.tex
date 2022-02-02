@@ -1,6 +1,6 @@
 \begin{tabular}{cccc||cccc}
 \hline 
- \small{$g$} & \small{$B(g)$} & \small{$S(g)$ for $b<B(g)$} & \small{$S(g)$ for $b\geq B(g)$} & \small{$g$} & \small{$B(g)$} & \small{$S(g)$ for $b<B(g)$} & \small{$S(g)$ for $b\geq B(g)$} \\ 
+ \small{$g$} & \small{$B(g)$} & \tiny{$S(g)$ for $b=1,...,B(g)-1$} & \tiny{$S(g)$ for $b= B(g),...$} & \small{$g$} & \small{$B(g)$} & \tiny{$S(g)$ for $b=1,...,B(g)-1$} & \tiny{$S(g)$ for $b= B(g),...$} \\ 
  \hline 
 \multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
 \node[shape=circle,draw=black,fill=black,scale=0.18] at (0.24235,0.43158) {};
@@ -14,7 +14,7 @@
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49494,-0.00591) -> (0.25259,-0.42568);
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.25259,-0.42568) -> (0.24235,0.43158);
 \end{tikzpicture}}
-& $1$ & $\emptyset$ & \small{$x^2 + x - 1$} & 
+& $1$ & $\emptyset$ & \small{$b^2 + b - 1$} & 
 \multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
 \node[shape=circle,draw=black,fill=black,scale=0.18] at (0.24235,0.43158) {};
 \node[shape=circle,draw=black,fill=black,scale=0.18] at (-0.49494,-0.00591) {};
@@ -91,7 +91,7 @@
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49497,0.0003) to[bend left] (-0.00018,-0.49234);
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.00018,-0.49234) to[bend left] (0.49497,0.0003);
 \end{tikzpicture}}
-& $2$ & $1$ & \small{$6x - 8$} \\ 
+& $2$ & $1$ & \small{$6b - 8$} \\ 
 \multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
 \node[shape=circle,draw=black,fill=black,scale=0.18] at (0.49358,0.0) {};
 \node[shape=circle,draw=black,fill=black,scale=0.18] at (-0.49497,0.0) {};
@@ -107,7 +107,7 @@
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.0007,0.22957) -> (0.49358,0.0);
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.0007,0.22957) -> (-0.49497,0.0);
 \end{tikzpicture}}
-& $2$ & $0$ & \small{$\frac{ 3 }{ 2 }x^2 + \frac{ 1 }{ 2 }x - 3$} & 
+& $2$ & $0$ & \small{$\frac{ 3 }{ 2 }b^2 + \frac{ 1 }{ 2 }b - 3$} & 
 \multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
 \node[shape=circle,draw=black,fill=black,scale=0.18] at (-0.28213,0.16158) {};
 \node[shape=circle,draw=black,fill=black,scale=0.18] at (-0.28213,-0.16158) {};
@@ -192,7 +192,7 @@
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49497,-1e-05) to[bend left] (-0.17579,1e-05);
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.17579,1e-05) to[bend left] (-0.49497,-1e-05);
 \end{tikzpicture}}
-& $2$ & $0$ & \small{$x - 2$} \\ 
+& $2$ & $0$ & \small{$b - 2$} \\ 
 \multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
 \node[shape=circle,draw=black,fill=black,scale=0.18] at (0.49358,0.0) {};
 \node[shape=circle,draw=black,fill=black,scale=0.18] at (-0.49497,0.0) {};
@@ -262,7 +262,7 @@
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (2e-05,0.0) -> (0.45986,0.1831);
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (2e-05,0.0) -> (-0.45987,-0.18296);
 \end{tikzpicture}}
-& $3$ & $0,4$ & \small{$\frac{ 9 }{ 2 }x^2 - \frac{ 3 }{ 2 }x - 13$} \\ 
+& $3$ & $0,4$ & \small{$\frac{ 9 }{ 2 }b^2 - \frac{ 3 }{ 2 }b - 13$} \\ 
 \multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
 \node[shape=circle,draw=black,fill=black,scale=0.18] at (-0.1346,0.18828) {};
 \node[shape=circle,draw=black,fill=black,scale=0.18] at (-0.13445,-0.18827) {};
@@ -280,5 +280,5 @@
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49497,-1e-05) to[bend left] (0.14678,6e-05);
 \draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.14678,6e-05) to[bend left] (0.49497,-1e-05);
 \end{tikzpicture}}
-& $3$ & $0,8$ & \small{$24x - 46$} & 
+& $3$ & $0,8$ & \small{$24b - 46$} & 
 \end{tabular}

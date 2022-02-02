@@ -30,7 +30,7 @@ class Polynomial(list):
             if eval(coeff) == 1 and power != 0:
                 coeff_str = ''
 
-            f = {0: '{}{}', 1: '{}{}x'}.get(power, '{}{}x^{}')
+            f = {0: '{}{}', 1: '{}{}b'}.get(power, '{}{}b^{}')
 
             result.append(f.format(j, coeff_str, power))
 
@@ -241,7 +241,7 @@ class TabularGraph:
         return block_str
 
     def make_tabular(self,tikz_str):
-        titles = " \small{$g$} & \small{$B(g)$} & \small{$S(g)$ for $b<B(g)$} & \small{$S(g)$ for $b\geq B(g)$} "
+        titles = " \small{$g$} & \small{$B(g)$} & \\tiny{$S(g)$ for $b=1,...,B(g)-1$} & \\tiny{$S(g)$ for $b= B(g),...$} "
         top = "\\hline \n"+titles+"&"+titles+"\\\\ \n \\hline \n"
         rval = "\\begin{tabular}{cccc||cccc}\n"+ top + tikz_str + "\\end{tabular}\n"
         return rval
