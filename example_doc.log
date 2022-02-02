@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.7)  2 FEB 2022 11:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.7)  2 FEB 2022 11:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -503,13 +503,15 @@ Overfull \hbox (15.28838pt too wide) in paragraph at lines 1--21
  [] 
  []
 
-[1{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[1{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+]
 (./example_doc.aux) ) 
 Here is how much of TeX's memory you used:
- 12499 strings out of 492609
- 263427 string characters out of 6129034
- 379465 words of memory out of 5000000
- 16199 multiletter control sequences out of 15000+600000
+ 12545 strings out of 492609
+ 264478 string characters out of 6129034
+ 383188 words of memory out of 5000000
+ 16245 multiletter control sequences out of 15000+600000
  5463 words of font info for 20 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,16n,65p,410b,1152s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -524,7 +526,7 @@ mr6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9
 pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pf
 b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
 
-Output written on example_doc.pdf (1 page, 90699 bytes).
+Output written on example_doc.pdf (1 page, 92791 bytes).
 PDF statistics:
  51 PDF objects out of 1000 (max. 8388607)
  37 compressed objects within 1 object stream

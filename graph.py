@@ -3,6 +3,7 @@ import numpy as np
 from astropy.io import fits
 import csv
 import math
+import os
 
 # TODO: arrow in middle of self-loops, 
 
@@ -39,12 +40,10 @@ class Polynomial(list):
 
 class TabularGraph:
     def __init__(self):
-        self.matrices = self.get_matrices()
-        self.subiso = self.get_lists("subiso.csv")
-        self.polys = self.get_lists("polys.csv")
+        pass
 
-    def get_matrices(self):
-        hdul = fits.open("matrices.fits")
+    def get_matrices(self,name):
+        hdul = fits.open(name)
         mats = [np.array(hdul[i].data,np.int8) for i in range(len(hdul))]
         return mats
 
@@ -176,7 +175,7 @@ class TabularGraph:
         layout = {k:np.round(v,decimals=rounding) for k,v in layout.items()}
         return layout
 
-    def create_block(self,mat,sub,poly):
+    def create_block(self,mat,in_table=True):
         hshift = 0
         vshift = 0
         H = nx.from_numpy_matrix(mat)
@@ -237,7 +236,11 @@ class TabularGraph:
                 block_str += self._draw_selfloop(px_in,py_in,loop_pos)
 
         width = self.scale*2.5
-        block_str = "\\multicolumn{1}{m{"+str(width)+"cm}}{\\begin{tikzpicture}\n" + block_str + "\\end{tikzpicture}}\n"
+
+        if in_table:
+            block_str = "\\multicolumn{1}{m{"+str(width)+"cm}}{\\begin{tikzpicture}\n" + block_str + "\\end{tikzpicture}}\n"
+        else:
+            block_str = "\\begin{tikzpicture}\n" + block_str + "\\end{tikzpicture}\n"
         return block_str
 
     def make_tabular(self,tikz_str):
@@ -246,7 +249,32 @@ class TabularGraph:
         rval = "\\begin{tabular}{cccc||cccc}\n"+ top + tikz_str + "\\end{tabular}\n"
         return rval
 
+    def single_graph_render(self,filename,seed=1,scale=1,angle=45,loops_are_nodes=False):
+
+        self.seed = seed
+        self.scale = scale
+        self.align_angle = 2*math.pi*((angle-45)/360)
+        self.loops_are_nodes = loops_are_nodes
+
+        ext = os.path.splitext(filename)[-1]
+        if ext == ".csv" or ext == ".fits":
+            pass
+        else:
+            raise ValueError(f"Invalid file type {ext}. Must be either '.fits' or '.csv'")
+
+        if ext == ".csv":
+            mat = np.array(self.get_lists(filename,cast_to_int=True))
+        if ext == ".fits":
+            mat = self.get_matrices(filename)[0]
+        
+        print(self.create_block(mat,in_table=False))
+
     def render(self,num=None,seed=1,scale=1,angle=45,loops_are_nodes=False,out_name="input.tex"):
+
+        self.matrices = self.get_matrices("matrices.fits")
+        self.subiso = self.get_lists("subiso.csv")
+        self.polys = self.get_lists("polys.csv")
+
         self.seed = seed
         self.scale = scale
         self.align_angle = 2*math.pi*((angle-45)/360)
@@ -257,7 +285,7 @@ class TabularGraph:
         if not num:
             num = len(self.matrices)
         for mat,sub,poly in list(zip(self.matrices,self.subiso,self.polys))[:num]:
-            block_str = self.create_block(mat,sub,poly)
+            block_str = self.create_block(mat)
             minb,sub_str,poly_str = self._draw_subiso_poly(sub,poly)
             tikz_str += block_str
             if counter:
