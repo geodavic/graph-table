@@ -132,7 +132,7 @@ class TabularGraph:
         #line_str = f"\\draw[->] ({px},{py}) edge[out={out_},in={in_},distance={distance}mm] ({px},{py});"
         return line_str 
 
-    def _draw_subiso_poly(self,minb,sub,poly,mid_y=0):
+    def _draw_subiso_poly(self,sub,poly,mid_y=0):
         if not sub:
             sub_str = "\emptyset"
         else:
@@ -141,6 +141,7 @@ class TabularGraph:
             poly_str = "0"
         else:
             poly_str = Polynomial(poly)
+        minb = len(sub)+1
         return str(minb),sub_str,poly_str
 
     def _pca_rotation(self,points):
@@ -258,7 +259,7 @@ class TabularGraph:
             num = len(self.matrices)
         for mat,minb,sub,poly in list(zip(self.matrices,self.MINB,self.subiso,self.polys))[:num]:
             block_str = self.create_block(mat,sub,poly)
-            minb,sub_str,poly_str = self._draw_subiso_poly(minb[0],sub,poly)
+            minb,sub_str,poly_str = self._draw_subiso_poly(sub,poly)
             tikz_str += block_str
             if counter:
                 tikz_str += f"& ${minb}$ & ${sub_str}$ & \small{{${poly_str}$}} & \n"
