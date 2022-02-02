@@ -40,8 +40,9 @@ class Polynomial(list):
 class TabularGraph:
     def __init__(self):
         self.matrices = self.get_matrices()
-        self.subiso = self.get_lists("subiso.csv",cast_to_int=True)
+        self.subiso = self.get_lists("subiso.csv")
         self.polys = self.get_lists("polys.csv")
+        self.MINB = self.get_lists("minb.csv")
 
     def get_matrices(self):
         hdul = fits.open("matrices.fits")
@@ -131,16 +132,16 @@ class TabularGraph:
         #line_str = f"\\draw[->] ({px},{py}) edge[out={out_},in={in_},distance={distance}mm] ({px},{py});"
         return line_str 
 
-    def _draw_subiso_poly(self,sub,poly,mid_y=0):
+    def _draw_subiso_poly(self,minb,sub,poly,mid_y=0):
         if not sub:
-            sub_str = "--"
+            sub_str = "\emptyset"
         else:
-            sub_str = str(sub)
+            sub_str = ",".join(sub)
         if not poly:
             poly_str = "0"
         else:
             poly_str = Polynomial(poly)
-        return sub_str,poly_str
+        return str(minb),sub_str,poly_str
 
     def _pca_rotation(self,points):
         cov = np.cov(np.array(points).T)
@@ -235,11 +236,12 @@ class TabularGraph:
                     
                 block_str += self._draw_selfloop(px_in,py_in,loop_pos)
 
-        block_str = "\\multicolumn{1}{m{2.5cm}}{\\begin{tikzpicture}\n" + block_str + "\\end{tikzpicture}}\n"
+        width = self.scale*2.5
+        block_str = "\\multicolumn{1}{m{"+str(width)+"cm}}{\\begin{tikzpicture}\n" + block_str + "\\end{tikzpicture}}\n"
         return block_str
 
     def make_tabular(self,tikz_str):
-        titles = " \small{Graph} & \small{Subisom.} & \small{Polynomial} & \small{Min. $b$} "
+        titles = " \small{$g$} & \small{$B(g)$} & \small{$S(g)$ for $b<B(g)$} & \small{$S(g)$ for $b\geq B(g)$} "
         top = "\\hline \n"+titles+"&"+titles+"\\\\ \n \\hline \n"
         rval = "\\begin{tabular}{cccc||cccc}\n"+ top + tikz_str + "\\end{tabular}\n"
         return rval
@@ -254,14 +256,14 @@ class TabularGraph:
         counter = True
         if not num:
             num = len(self.matrices)
-        for mat,sub,poly in list(zip(self.matrices,self.subiso,self.polys))[:num]:
+        for mat,minb,sub,poly in list(zip(self.matrices,self.MINB,self.subiso,self.polys))[:num]:
             block_str = self.create_block(mat,sub,poly)
-            sub_str,poly_str = self._draw_subiso_poly(sub,poly)
+            minb,sub_str,poly_str = self._draw_subiso_poly(minb[0],sub,poly)
             tikz_str += block_str
             if counter:
-                tikz_str += f"& ${sub_str}$ & \small{{${poly_str}$}} & ${len(sub)}$ & \n"
+                tikz_str += f"& ${minb}$ & ${sub_str}$ & \small{{${poly_str}$}} & \n"
             else:
-                tikz_str += f"& ${sub_str}$ & \small{{${poly_str}$}} & ${len(sub)}$ \\\\ \n"
+                tikz_str += f"& ${minb}$ & ${sub_str}$ & \small{{${poly_str}$}} \\\\ \n"
             counter ^= 1
        
         final = self.make_tabular(tikz_str)

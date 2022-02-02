@@ -1,63 +1,284 @@
 \begin{tabular}{cccc||cccc}
 \hline 
- \small{Graph} & \small{Subisom.} & \small{Polynomial} & \small{Min. $b$} & \small{Graph} & \small{Subisom.} & \small{Polynomial} & \small{Min. $b$} \\ 
+ \small{$g$} & \small{$B(g)$} & \small{$S(g)$ for $b<B(g)$} & \small{$S(g)$ for $b\geq B(g)$} & \small{$g$} & \small{$B(g)$} & \small{$S(g)$ for $b<B(g)$} & \small{$S(g)$ for $b\geq B(g)$} \\ 
  \hline 
-\multicolumn{1}{m{2.5cm}}{\begin{tikzpicture}
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.38776,0.69054) {};
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.7919,-0.00945) {};
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.40414,-0.68108) {};
-\node at (-0.8,-0.8) {};
-\node at (-0.8,0.8) {};
-\node at (0.8,-0.8) {};
-\node at (0.8,0.8) {};
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.38776,0.69054) -> (-0.7919,-0.00945);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.7919,-0.00945) -> (0.40414,-0.68108);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.40414,-0.68108) -> (0.38776,0.69054);
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.24235,0.43158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.49494,-0.00591) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.25259,-0.42568) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.24235,0.43158) -> (-0.49494,-0.00591);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49494,-0.00591) -> (0.25259,-0.42568);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.25259,-0.42568) -> (0.24235,0.43158);
 \end{tikzpicture}}
-& $--$ & \small{$x^2 + x - 1$} & $0$ & 
-\multicolumn{1}{m{2.5cm}}{\begin{tikzpicture}
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.38776,0.69054) {};
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.7919,-0.00945) {};
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.40414,-0.68108) {};
-\node at (-0.8,-0.8) {};
-\node at (-0.8,0.8) {};
-\node at (0.8,-0.8) {};
-\node at (0.8,0.8) {};
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.38776,0.69054) -> (0.40414,-0.68108);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.40414,-0.68108) -> (-0.7919,-0.00945);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.38776,0.69054) edge[out=20.68429680224657,in=100.68429680224656,distance=7.2mm] (0.38776,0.69054);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.38776,0.69054) to[bend left] (-0.7919,-0.00945);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.7919,-0.00945) to[bend left] (0.38776,0.69054);
+& $1$ & $\emptyset$ & \small{$x^2 + x - 1$} & 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.24235,0.43158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.49494,-0.00591) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.25259,-0.42568) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.24235,0.43158) -> (0.25259,-0.42568);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.25259,-0.42568) -> (-0.49494,-0.00591);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.24235,0.43158) edge[out=20.684178726466115,in=100.68417872646611,distance=4.5mm] (0.24235,0.43158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.24235,0.43158) to[bend left] (-0.49494,-0.00591);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49494,-0.00591) to[bend left] (0.24235,0.43158);
 \end{tikzpicture}}
-& $--$ & \small{$1$} & $0$ \\ 
-\multicolumn{1}{m{2.5cm}}{\begin{tikzpicture}
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.38776,0.69054) {};
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.7919,-0.00945) {};
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.40414,-0.68108) {};
-\node at (-0.8,-0.8) {};
-\node at (-0.8,0.8) {};
-\node at (0.8,-0.8) {};
-\node at (0.8,0.8) {};
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.38776,0.69054) -> (0.40414,-0.68108);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.40414,-0.68108) -> (-0.7919,-0.00945);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.38776,0.69054) to[bend left] (-0.7919,-0.00945);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.7919,-0.00945) to[bend left] (0.38776,0.69054);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.7919,-0.00945) edge[out=140.68393784058927,in=220.68393784058927,distance=7.2mm] (-0.7919,-0.00945);
+& $1$ & $\emptyset$ & \small{$1$} \\ 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.24235,0.43158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.49494,-0.00591) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.25259,-0.42568) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.24235,0.43158) -> (0.25259,-0.42568);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.25259,-0.42568) -> (-0.49494,-0.00591);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.24235,0.43158) to[bend left] (-0.49494,-0.00591);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49494,-0.00591) to[bend left] (0.24235,0.43158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49494,-0.00591) edge[out=140.6837414752804,in=220.6837414752804,distance=4.5mm] (-0.49494,-0.00591);
 \end{tikzpicture}}
-& $[0]$ & \small{$1$} & $1$ & 
-\multicolumn{1}{m{2.5cm}}{\begin{tikzpicture}
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.38776,0.69054) {};
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.7919,-0.00945) {};
-\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.40414,-0.68108) {};
-\node at (-0.8,-0.8) {};
-\node at (-0.8,0.8) {};
-\node at (0.8,-0.8) {};
-\node at (0.8,0.8) {};
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.38776,0.69054) -> (0.40414,-0.68108);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.40414,-0.68108) -> (-0.7919,-0.00945);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.38776,0.69054) to[bend left] (-0.7919,-0.00945);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.7919,-0.00945) to[bend left] (0.38776,0.69054);
-\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.40414,-0.68108) edge[out=260.6839697722584,in=340.6839697722584,distance=7.2mm] (0.40414,-0.68108);
+& $1$ & $0$ & \small{$1$} & 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.24235,0.43158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.49494,-0.00591) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.25259,-0.42568) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.24235,0.43158) -> (0.25259,-0.42568);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.25259,-0.42568) -> (-0.49494,-0.00591);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.24235,0.43158) to[bend left] (-0.49494,-0.00591);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49494,-0.00591) to[bend left] (0.24235,0.43158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.25259,-0.42568) edge[out=260.68424325519476,in=340.68424325519476,distance=4.5mm] (0.25259,-0.42568);
 \end{tikzpicture}}
-& $--$ & \small{$0$} & $0$ \\ 
+& $1$ & $\emptyset$ & \small{$0$} \\ 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.24235,0.43158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.49494,-0.00591) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.25259,-0.42568) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.24235,0.43158) to[bend left] (-0.49494,-0.00591);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49494,-0.00591) to[bend left] (0.24235,0.43158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.24235,0.43158) to[bend left] (0.25259,-0.42568);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.25259,-0.42568) to[bend left] (0.24235,0.43158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49494,-0.00591) to[bend left] (0.25259,-0.42568);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.25259,-0.42568) to[bend left] (-0.49494,-0.00591);
+\end{tikzpicture}}
+& $1$ & $\emptyset$ & \small{$0$} & 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.49497,0.0003) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.494,-0.0003) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.00018,-0.49234) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.00079,0.49234) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49497,0.0003) -> (-0.00079,0.49234);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.494,-0.0003) -> (-0.00018,-0.49234);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.00079,0.49234) -> (-0.494,-0.0003);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49497,0.0003) to[bend left] (-0.00018,-0.49234);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.00018,-0.49234) to[bend left] (0.49497,0.0003);
+\end{tikzpicture}}
+& $1$ & $1$ & \small{$6x - 8$} \\ 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.49358,0.0) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.49497,0.0) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.0007,-0.22957) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.0007,0.22957) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49358,0.0) -> (0.0007,-0.22957);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49497,0.0) -> (0.0007,-0.22957);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.0007,-0.22957) -> (0.0007,0.22957);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.0007,0.22957) -> (0.49358,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.0007,0.22957) -> (-0.49497,0.0);
+\end{tikzpicture}}
+& $1$ & $0$ & \small{$\frac{ 3 }{ 2 }x^2 + \frac{ 1 }{ 2 }x - 3$} & 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.28213,0.16158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.28213,-0.16158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.49497,0.0) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.06928,0.0) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.28213,0.16158) -> (-0.28213,-0.16158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.28213,-0.16158) -> (0.06928,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.06928,0.0) -> (-0.28213,0.16158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.28213,0.16158) edge[out=85.94005870977962,in=165.94005870977963,distance=4.5mm] (-0.28213,0.16158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49497,0.0) to[bend left] (0.06928,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.06928,0.0) to[bend left] (0.49497,0.0);
+\end{tikzpicture}}
+& $1$ & $0$ & \small{$1$} \\ 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.28213,0.16158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.28213,-0.16158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.49497,0.0) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.06928,0.0) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.28213,0.16158) -> (-0.28213,-0.16158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.28213,-0.16158) -> (0.06928,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.06928,0.0) -> (-0.28213,0.16158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.28213,-0.16158) edge[out=194.0599412902204,in=274.0599412902204,distance=4.5mm] (-0.28213,-0.16158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49497,0.0) to[bend left] (0.06928,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.06928,0.0) to[bend left] (0.49497,0.0);
+\end{tikzpicture}}
+& $1$ & $0$ & \small{$1$} & 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.28213,0.16158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.28213,-0.16158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.49497,0.0) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.06928,0.0) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.28213,0.16158) -> (-0.28213,-0.16158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.28213,-0.16158) -> (0.06928,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.06928,0.0) -> (-0.28213,0.16158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49497,0.0) edge[out=-40.0,in=40.0,distance=4.5mm] (0.49497,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49497,0.0) to[bend left] (0.06928,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.06928,0.0) to[bend left] (0.49497,0.0);
+\end{tikzpicture}}
+& $1$ & $0,1$ & \small{$3$} \\ 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.28213,0.16158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.28213,-0.16158) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.49497,0.0) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.06928,0.0) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.28213,0.16158) -> (-0.28213,-0.16158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.28213,-0.16158) -> (0.06928,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.06928,0.0) -> (-0.28213,0.16158);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49497,0.0) to[bend left] (0.06928,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.06928,0.0) to[bend left] (0.49497,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.06928,0.0) edge[out=62.34659901017959,in=142.3465990101796,distance=4.5mm] (0.06928,0.0);
+\end{tikzpicture}}
+& $1$ & $0$ & \small{$1$} & 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.17579,1e-05) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.49497,-1e-05) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.49497,-1e-05) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.17579,1e-05) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.17579,1e-05) to[bend left] (0.49497,-1e-05);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49497,-1e-05) to[bend left] (0.17579,1e-05);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.17579,1e-05) to[bend left] (-0.17579,1e-05);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.17579,1e-05) to[bend left] (0.17579,1e-05);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49497,-1e-05) to[bend left] (-0.17579,1e-05);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.17579,1e-05) to[bend left] (-0.49497,-1e-05);
+\end{tikzpicture}}
+& $1$ & $0$ & \small{$x - 2$} \\ 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.49358,0.0) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.49497,0.0) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.0007,-0.22957) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.0007,0.22957) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49358,0.0) -> (0.0007,-0.22957);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.49497,0.0) -> (0.0007,0.22957);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.0007,-0.22957) -> (-0.49497,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.0007,0.22957) -> (0.49358,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.0007,-0.22957) to[bend left] (0.0007,0.22957);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.0007,0.22957) to[bend left] (0.0007,-0.22957);
+\end{tikzpicture}}
+& $1$ & $0$ & \small{$1$} & 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.01248,0.49482) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.42225,-0.25789) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.43471,-0.23629) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (2e-05,-0.00064) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.01248,0.49482) to[bend left] (2e-05,-0.00064);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (2e-05,-0.00064) to[bend left] (-0.01248,0.49482);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.42225,-0.25789) to[bend left] (2e-05,-0.00064);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (2e-05,-0.00064) to[bend left] (-0.42225,-0.25789);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.43471,-0.23629) to[bend left] (2e-05,-0.00064);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (2e-05,-0.00064) to[bend left] (0.43471,-0.23629);
+\end{tikzpicture}}
+& $1$ & $\emptyset$ & \small{$0$} \\ 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.33152,0.36755) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.24776,0.42841) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.05172,-0.49163) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.45192,-0.20133) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.48397,-0.103) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.33152,0.36755) -> (0.24776,0.42841);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.24776,0.42841) -> (0.48397,-0.103);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.05172,-0.49163) -> (-0.45192,-0.20133);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.45192,-0.20133) -> (-0.33152,0.36755);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.48397,-0.103) -> (0.05172,-0.49163);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.33152,0.36755) edge[out=92.09060472326675,in=172.09060472326675,distance=4.5mm] (-0.33152,0.36755);
+\end{tikzpicture}}
+& $1$ & $1,14,42$ & \small{$66$} & 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.45986,0.1831) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.45987,-0.18296) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.45986,-0.1831) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.45987,0.18296) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (2e-05,0.0) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.45986,0.1831) -> (0.45986,-0.1831);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.45987,-0.18296) -> (-0.45987,0.18296);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.45986,-0.1831) -> (2e-05,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.45987,0.18296) -> (2e-05,0.0);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (2e-05,0.0) -> (0.45986,0.1831);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (2e-05,0.0) -> (-0.45987,-0.18296);
+\end{tikzpicture}}
+& $1$ & $0,4$ & \small{$\frac{ 9 }{ 2 }x^2 - \frac{ 3 }{ 2 }x - 13$} \\ 
+\multicolumn{1}{m{1.25cm}}{\begin{tikzpicture}
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.1346,0.18828) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.13445,-0.18827) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.49497,-1e-05) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (-0.3727,-7e-05) {};
+\node[shape=circle,draw=black,fill=black,scale=0.3] at (0.14678,6e-05) {};
+\node at (-0.5,-0.5) {};
+\node at (-0.5,0.5) {};
+\node at (0.5,-0.5) {};
+\node at (0.5,0.5) {};
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.1346,0.18828) -> (-0.3727,-7e-05);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.13445,-0.18827) -> (0.14678,6e-05);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (-0.3727,-7e-05) -> (-0.13445,-0.18827);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.14678,6e-05) -> (-0.1346,0.18828);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.49497,-1e-05) to[bend left] (0.14678,6e-05);
+\draw[decoration={markings, mark=at position 0.625 with {\arrow{>} } },postaction={decorate}] (0.14678,6e-05) to[bend left] (0.49497,-1e-05);
+\end{tikzpicture}}
+& $1$ & $0,8$ & \small{$24x - 46$} & 
 \end{tabular}
