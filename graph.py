@@ -200,7 +200,8 @@ class TabularGraph:
             py = pos[1] + vshift
             x_vals.append(px)
             y_vals.append(py)
-            block_str += f"\\node[shape=circle,draw=black,fill=black,scale=0.3] at ({px},{py}) {{}};\n"
+            circle_scale=max(0.3*self.scale,0.18)
+            block_str += f"\\node[shape=circle,draw=black,fill=black,scale={circle_scale}] at ({px},{py}) {{}};\n"
 
         # draw ghost nodes for bounding figure
         for node_x in [-self.scale,self.scale]:
