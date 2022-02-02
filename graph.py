@@ -42,7 +42,6 @@ class TabularGraph:
         self.matrices = self.get_matrices()
         self.subiso = self.get_lists("subiso.csv")
         self.polys = self.get_lists("polys.csv")
-        self.MINB = self.get_lists("minb.csv")
 
     def get_matrices(self):
         hdul = fits.open("matrices.fits")
@@ -126,8 +125,7 @@ class TabularGraph:
         opt_angle = self._compute_loop_angle(px,py,loop_pos)
         in_ = opt_angle + angle_width
         out_ = opt_angle - angle_width
-        line_str = f"\\draw[decoration={{markings, mark=at position {self.middle_arrow_prop} with {{\\arrow{{>}} }} }},"\
-            +f"postaction={{decorate}}] ({px},{py}) edge[out={out_},in={in_},distance={distance}mm] ({px},{py});\n"
+        line_str = f"\\draw ({px},{py}) edge[out={out_},in={in_},distance={distance}mm] ({px},{py});\n"
 
         #line_str = f"\\draw[->] ({px},{py}) edge[out={out_},in={in_},distance={distance}mm] ({px},{py});"
         return line_str 
@@ -257,7 +255,7 @@ class TabularGraph:
         counter = True
         if not num:
             num = len(self.matrices)
-        for mat,minb,sub,poly in list(zip(self.matrices,self.MINB,self.subiso,self.polys))[:num]:
+        for mat,sub,poly in list(zip(self.matrices,self.subiso,self.polys))[:num]:
             block_str = self.create_block(mat,sub,poly)
             minb,sub_str,poly_str = self._draw_subiso_poly(sub,poly)
             tikz_str += block_str
